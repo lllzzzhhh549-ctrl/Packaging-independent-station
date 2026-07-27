@@ -1,85 +1,85 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 
 <head>
 
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 
 <title>
-Heidelberg Packaging Solutions | Luxury Packaging Manufacturer
+Heidelberg Packaging Solutions
 </title>
 
 
-<!-- Google Font -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
+
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 <link href="
-https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap
-" rel="stylesheet">
+https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+rel="stylesheet">
 
 
-<!-- Tailwind -->
 <script src="
-https://cdn.tailwindcss.com
-"></script>
+https://cdn.tailwindcss.com">
+</script>
 
 
 <style>
 
-
 *{
-font-family:'Inter',sans-serif;
+font-family:Inter,sans-serif;
 }
 
 
 body{
 margin:0;
-overflow:hidden;
 }
 
-
-/* Liquid Glass */
 
 .liquid-glass{
 
-background:rgba(255,255,255,0.01);
-background-blend-mode:luminosity;
+background:
+rgba(255,255,255,.03);
 
-backdrop-filter:blur(4px);
--webkit-backdrop-filter:blur(4px);
+backdrop-filter:
+blur(8px);
+
+-webkit-backdrop-filter:
+blur(8px);
+
 
 box-shadow:
-inset 0 1px 1px rgba(255,255,255,.1);
+inset 0 1px 1px rgba(255,255,255,.15);
 
 position:relative;
+
 overflow:hidden;
 
 }
 
 
-.liquid-glass::before{
+
+.liquid-glass:before{
 
 content:"";
 
 position:absolute;
+
 inset:0;
 
-border-radius:inherit;
+padding:1px;
 
-padding:1.4px;
+border-radius:inherit;
 
 
 background:
 linear-gradient(
 180deg,
-rgba(255,255,255,.45) 0%,
-rgba(255,255,255,.15) 20%,
-transparent 40%,
-transparent 60%,
-rgba(255,255,255,.15) 80%,
-rgba(255,255,255,.45) 100%
+rgba(255,255,255,.6),
+transparent,
+rgba(255,255,255,.3)
 );
 
 
@@ -87,19 +87,15 @@ rgba(255,255,255,.45) 100%
 linear-gradient(#fff 0 0) content-box,
 linear-gradient(#fff 0 0);
 
+
 -webkit-mask-composite:xor;
-
-mask-composite:exclude;
-
 
 pointer-events:none;
 
 }
 
 
-
 </style>
-
 
 </head>
 
@@ -111,13 +107,12 @@ pointer-events:none;
 <div id="root"></div>
 
 
-
-<script crossorigin src="
+<script src="
 https://unpkg.com/react@18/umd/react.development.js">
 </script>
 
 
-<script crossorigin src="
+<script src="
 https://unpkg.com/react-dom@18/umd/react-dom.development.js">
 </script>
 
@@ -127,57 +122,33 @@ https://unpkg.com/@babel/standalone/babel.min.js">
 </script>
 
 
-<script src="
-https://unpkg.com/lucide@latest">
-</script>
-
-
-
 
 <script type="text/babel">
 
 
-const {
-useState
-}=React;
+
+const {useState}=React;
 
 
 
-const {
-Menu,
-X,
-CircleUserRound
-}=lucide;
+function UserIcon(){
 
-
-
-
-function Logo(){
-
-return(
+return (
 
 <svg
-width="36"
-height="36"
-viewBox="0 0 256 256"
-fill="white"
+width="22"
+height="22"
+viewBox="0 0 24 24"
+fill="none"
+stroke="white"
+strokeWidth="1.5"
 >
 
-<path d="
-M128 128
-C198.692 128 256 185.308 256 256
-L151.883 256
-C149.812 220.307 120.213 192 84 192
-C47.787 192 18.188 220.307 16.117 256
-L0 256
-C0 185.308 57.308 128 128 128 Z
+<circle cx="12" cy="8" r="4"/>
 
-M104.117 0
-C106.188 35.694 135.787 64 172 64
-C208.213 64 237.812 35.694 239.883 0
-L256 0
-C256 70.692 198.692 128 128 128
-C57.308 128 0 70.692 0 0 Z
+<path d="
+M4 21
+c0-4 4-6 8-6s8 2 8 6
 "/>
 
 </svg>
@@ -188,18 +159,49 @@ C57.308 128 0 70.692 0 0 Z
 
 
 
+function MenuIcon(){
 
-const productImages=[
+return(
 
-"https://images.unsplash.com/photo-1544816155-12df9643f363",
+<svg
+width="22"
+height="22"
+stroke="white"
+strokeWidth="2"
+>
 
-"https://images.unsplash.com/photo-1608571423902-eed4a5ad8108",
+<line x1="3" y1="7" x2="21" y2="7"/>
 
-"https://images.unsplash.com/photo-1547887538-e3a2f32cb1cc",
+<line x1="3" y1="12" x2="21" y2="12"/>
 
-"https://images.unsplash.com/photo-1586495777744-4413f21062fa"
+<line x1="3" y1="17" x2="21" y2="17"/>
 
-];
+</svg>
+
+)
+
+}
+
+
+
+
+function Logo(){
+
+return(
+
+<div className="
+text-2xl
+font-semibold
+tracking-tight
+">
+
+HP
+
+</div>
+
+)
+
+}
 
 
 
@@ -207,26 +209,25 @@ const productImages=[
 function App(){
 
 
-const [menuOpen,setMenuOpen]=useState(false);
+const [open,setOpen]=useState(false);
 
 
+return(
 
-return (
-
-<section
-className="
+<div className="
 h-screen
-w-screen
 relative
+overflow-hidden
 text-white
-"
->
+">
 
-
-
-{/* Background */}
 
 <video
+
+autoPlay
+loop
+muted
+playsInline
 
 className="
 absolute
@@ -236,120 +237,109 @@ h-full
 object-cover
 "
 
-autoPlay
-loop
-muted
-playsInline
 
->
-
-<source src="
+src="
 https://d8j0ntlcm91z4.cloudfront.net/user_38xzZboKViGWJOttwIXH07lWA1P/hf_20260715_082433_69699cf8-444b-4484-93cc-053e57896dfd.mp4
 "
+
 />
 
-</video>
 
 
-
-<div
-className="
+<div className="
 absolute
 inset-0
-bg-black/40
-"
-/>
+bg-black/50
+"/>
 
 
 
 
-{/* NAV */}
 
-<nav
-
-className="
+<header className="
 absolute
-z-20
 top-0
 left-0
 right-0
+z-20
+
 flex
-items-center
 justify-between
-px-5
-pt-6
-sm:px-8
-sm:pt-8
-md:px-16
-lg:px-20
-"
+items-center
 
->
+px-6
+pt-8
+
+md:px-20
+">
 
 
-<Logo />
+<Logo/>
 
 
 
-<div
 
-className="
+<nav className="
 hidden
 md:flex
+
 liquid-glass
+
 rounded-full
-px-8
+
+px-10
 py-3
+
 gap-8
+
 text-sm
-font-medium
-"
 
->
+">
 
-<a className="text-white">
+
+<span>
 Home
-</a>
+</span>
 
-<a className="text-white/70 hover:text-white">
+
+<span className="text-white/70">
 Packaging Solutions
-</a>
+</span>
 
 
-<a className="text-white/70 hover:text-white">
-Printing Technology
-</a>
+<span className="text-white/70">
+Technology
+</span>
 
 
-<a className="text-white/70 hover:text-white">
+<span className="text-white/70">
 Factory
-</a>
-
-</div>
+</span>
 
 
+</nav>
 
-<div className="hidden md:flex">
 
-<div
-className="
+
+<div className="
+hidden
+md:flex
+
 liquid-glass
-h-10
+
 w-10
+h-10
+
 rounded-full
-flex
+
 items-center
 justify-center
-"
->
 
-<CircleUserRound
-size={20}
-strokeWidth={1.5}
-className="text-white/80"
-/>
+">
 
-</div>
+
+<UserIcon/>
+
 
 </div>
 
@@ -358,283 +348,92 @@ className="text-white/80"
 
 <button
 
-onClick={()=>setMenuOpen(!menuOpen)}
+onClick={()=>setOpen(!open)}
 
 className="
 md:hidden
+
 liquid-glass
-h-10
+
 w-10
+h-10
+
 rounded-full
+
 flex
 items-center
 justify-center
-z-50
-relative
 "
 
 >
 
-
-<Menu
-className={`
-absolute
-transition-all
-duration-300
-${menuOpen?
-"rotate-90 scale-0 opacity-0":
-""
-}
-`}
-/>
-
-
-
-<X
-
-className={`
-absolute
-transition-all
-duration-300
-${menuOpen?
-"":
-"rotate-90 scale-0 opacity-0"
-}
-`}
-
-/>
-
+<MenuIcon/>
 
 
 </button>
 
 
-</nav>
+
+</header>
 
 
 
 
 
-{/* MOBILE MENU */}
-
-
-<div
-
-className={`
-fixed
-inset-0
-z-10
-md:hidden
-bg-black/80
-backdrop-blur-xl
-
-flex
-flex-col
-items-center
-justify-center
-gap-8
-
-transition-opacity
-duration-500
-
-${menuOpen?
-"opacity-100":
-"opacity-0 pointer-events-none"
-}
-
-`}
-
->
-
-
-<a className="text-2xl">
-Home
-</a>
-
-
-<a className="text-2xl">
-Packaging Solutions
-</a>
-
-
-<a className="text-2xl">
-Printing Technology
-</a>
-
-
-
-<div className="
-flex
-items-center
-gap-3
-mt-5
-">
-
-
-<div
-className="
-liquid-glass
-w-10
-h-10
-rounded-full
-flex
-items-center
-justify-center
-"
->
-
-<CircleUserRound size={20}/>
-
-</div>
-
-
-<span className="
-text-sm
-font-light
-text-white/60
-">
-
-Account
-
-</span>
-
-
-</div>
-
-
-</div>
-
-
-
-
-
-
-
-{/* MAIN */}
-
-
-<main
-
-className={`
+<main className="
 relative
 z-10
+
 h-full
+
 flex
 flex-col
 justify-between
 
-px-5
-sm:px-8
-md:px-16
-lg:px-20
+px-6
+md:px-20
 
-pt-32
+pt-40
 pb-10
 
-transition-opacity
-
-${menuOpen?
-"md:opacity-100 opacity-0 pointer-events-none":
-""
-}
-
-`}
-
->
-
-
-
-
-<div className="
-mt-14
-sm:mt-20
-md:mt-28
-max-w-2xl
 ">
 
 
-{/* Badge */}
+<section>
 
-<div
-className="
+
+<div className="
 liquid-glass
+
 inline-flex
-items-center
-gap-3
+
 rounded-full
+
 px-4
 py-2
+
 mb-6
-"
->
 
-
-<div className="
-flex
--space-x-2
-">
-
-
-{
-productImages.map((img,i)=>(
-
-<img
-
-key={i}
-
-src={img}
-
-className="
-h-6
-w-6
-rounded-full
-object-cover
-border-2
-border-white/20
--mr-2
-"
-
-/>
-
-))
-}
-
-
-</div>
-
-
-
-<span className="
 text-sm
-font-light
-text-white/80
 ">
 
-Trusted packaging partner for global brands
-
-</span>
-
+Global Packaging Manufacturer
 
 </div>
 
 
 
-
-<h1
-
-style={{
-letterSpacing:"-0.05em"
-}}
-
-className="
+<h1 className="
 text-5xl
-sm:text-6xl
-lg:text-7xl
-leading-[1.05]
-font-normal
-"
+md:text-7xl
 
->
+leading-tight
+
+font-normal
+
+tracking-tight
+">
+
 
 Premium Packaging
 
@@ -647,44 +446,40 @@ Made To Impress
 
 
 
+<p className="
+mt-6
 
-<p
+max-w-xl
 
-className="
-mt-5
-text-base
-md:text-lg
-font-light
 text-white/70
-"
 
->
+text-lg
 
-Luxury packaging solutions powered by Heidelberg printing technology.
-<br/>
+font-light
+">
 
-From concept to production, we create packaging that makes brands unforgettable.
+Luxury boxes, cosmetic packaging and custom printed cartons.
+
+Powered by Heidelberg printing technology.
 
 </p>
 
 
 
 
-<button
-
-className="
+<button className="
 liquid-glass
-rounded-full
-px-7
-py-3.5
-mt-8
-text-sm
-font-medium
-hover:bg-white/10
-transition
-"
 
->
+rounded-full
+
+px-8
+py-4
+
+mt-8
+
+text-sm
+
+">
 
 Request A Quote
 
@@ -692,44 +487,30 @@ Request A Quote
 
 
 
-</div>
+</section>
 
 
 
 
 
-{/* STATS */}
-
-
-<div
-
-className="
+<section className="
 flex
-items-end
-gap-10
-md:gap-16
-"
-
->
+gap-16
+">
 
 
 <div>
 
-
 <div className="
-text-3xl
-font-normal
+text-4xl
 ">
 
 20+
 
 </div>
 
-
 <div className="
-text-sm
 text-white/60
-font-light
 ">
 
 Years Experience
@@ -741,13 +522,11 @@ Years Experience
 
 
 
-
 <div>
 
 
 <div className="
-text-3xl
-font-normal
+text-4xl
 ">
 
 50+
@@ -756,9 +535,7 @@ font-normal
 
 
 <div className="
-text-sm
 text-white/60
-font-light
 ">
 
 Countries Exported
@@ -769,17 +546,16 @@ Countries Exported
 </div>
 
 
-
-</div>
-
-
+</section>
 
 
 </main>
 
 
 
-</section>
+
+
+</div>
 
 
 )
@@ -789,13 +565,16 @@ Countries Exported
 
 
 ReactDOM
-.createRoot(document.getElementById("root"))
+.createRoot(
+document.getElementById("root")
+)
 .render(<App/>);
+
 
 
 </script>
 
 
-
 </body>
+
 </html>
